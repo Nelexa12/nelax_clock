@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Time</title>
+</head>
+<style>
+    body {
+        background-color: black;
+    }
+    
+    div {
+        text-align: center;
+        margin: auto;
+    }
+    
+    #clock {
+        color: black;
+        background-color: white;
+        font-size: 1000%;
+        width: 80%;
+        margin: 10;
+        text-align: center;
+        background: linear-gradient(135deg, #14ffc9, #ffcb3b, #ff00c0);
+        border-radius: 20px;
+        animation: animate 1.7s linear infinite;
+    }
+    
+    h1 {
+        font-size: 580%;
+        text-align: center;
+        background: linear-gradient(135deg, #14ffc9, #ffcb3b, #ff00c0);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        animation: animate 1.7s linear infinite;
+    }
+    
+    @keyframes animate {
+        100% {
+            filter: hue-rotate(144deg);
+        }
+    }
+    
+    @media only screen and (min-width: 800px) and (max-width: 1012px) {
+        #clock {
+            font-size: 800%;
+        }
+        h1 {
+            margin-top: 15%;
+            font-size: 400%;
+        }
+    }
+    
+    @media only screen and (max-width: 799px) and (min-width: 515px) {
+        #clock {
+            font-size: 500%;
+        }
+        h1 {
+            margin-top: 35%;
+            font-size: 200%;
+        }
+    }
+    
+    @media only screen and (max-width: 514px) and (min-width: 380px) {
+        #clock {
+            font-size: 350%;
+        }
+        h1 {
+            margin-top: 35%;
+            font-size: 200%;
+        }
+    }
+    
+    @media only screen and (max-width: 379px) and (min-width: 300px) {
+        #clock {
+            font-size: 280%;
+        }
+        h1 {
+            margin-top: 35%;
+            font-size: 200%;
+        }
+    }
+    
+    @media only screen and (max-width: 299px) and (min-width: 180px) {
+        #clock {
+            font-size: 190%;
+        }
+        h1 {
+            margin-top: 55%;
+            font-size: 100%;
+        }
+    }
+</style>
+
+<body>
+    <h1>NELAX'S DIGITAL CLOCK</h1>
+    <div id="clock"> 8 : 30 : 15 </div>
+    <script>
+        setInterval(showTime, 1000);
+
+        function showTime() {
+
+            let time = new Date();
+            let hour = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+
+            am_pm = "AM";
+
+            if (hour > 12) {
+                hour -= 12;
+                am_pm = "PM"
+            }
+            if (hour == 0) {
+                hour = 0;
+                am_pm = "AM"
+            }
+            hour = hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? +sec : sec;
+
+            let currentTime = hour + ":" + min + ":" + sec + am_pm;
+            document.getElementById("clock").innerHTML = currentTime;
+        }
+        showTime();
+    </script>
+</body>
+
+</html>
